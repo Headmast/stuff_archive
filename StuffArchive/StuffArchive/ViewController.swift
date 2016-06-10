@@ -14,8 +14,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "simpleId")
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,16 +26,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell?:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("simpleId") as UITableViewCell;
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("simpleId", forIndexPath: indexPath) as! TableViewCell;
         
-        //cell.textLabel?.text = self.items[indexPath.row]
-        
+        cell.headerLabel?.text = "test";
+
         return cell
-        //return TableViewCell()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+    }
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0001;
     }
 
 }
